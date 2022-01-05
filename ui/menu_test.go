@@ -15,6 +15,7 @@ func Test_SelectBasic(t *testing.T) {
 
 func Test_SelectOver(t *testing.T) {
 	//Select something over length of options
+	m.selected = len(m.options)
 	m.Select(len(m.options) + 1)
 	if m.selected != 0 {
 		t.Fail()

@@ -30,6 +30,13 @@ func (m Menu) Draw(x, y int, r *ebiten.Image) {
 
 //Updates item selected for a menu. If new selection is greater or less than menu optiosn
 //will wrap options around
-func (m Menu) Select(i int) {
-
+func (m *Menu) Select(i int) {
+	switch {
+	case i < 0:
+		m.selected = len(m.options) - 1
+	case i > len(m.options)-1:
+		m.selected = 0
+	default:
+		m.selected = i
+	}
 }
