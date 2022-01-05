@@ -17,13 +17,16 @@ var menu_pos = 0
 
 func (g *Game) Update() error {
 	if inpututil.IsKeyJustPressed(ebiten.KeyArrowUp) {
-		ui.MAIN_MENU.SelectPrevious()
+		ui.CurrentMenu.SelectPrevious()
 	}
 	if inpututil.IsKeyJustPressed(ebiten.KeyArrowDown) {
-		ui.MAIN_MENU.SelectNext()
+		ui.CurrentMenu.SelectNext()
 	}
 	if inpututil.IsKeyJustPressed(ebiten.KeyArrowRight) {
-		ui.MAIN_MENU.Enter()
+		ui.CurrentMenu.Enter()
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyArrowLeft) {
+		ui.CurrentMenu.GoToParent()
 	}
 
 	return nil
@@ -43,10 +46,12 @@ func init() {
 		DPI:     dpi,
 		Hinting: font.HintingFull,
 	})
+
+	ui.CurrentMenu = &ui.ATTACK_MENU
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	ui.MAIN_MENU.Draw(10, 20, screen)
+	ui.CurrentMenu.Draw(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {

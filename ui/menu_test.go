@@ -3,7 +3,7 @@ package ui
 import "testing"
 
 var action_string = ""
-var m = Menu{options: []string{"TEST", "TEST2", "TEST3", "TEST4"}, actions: []func(){func() { action_string = "HIT" }, nil, nil, nil}}
+var m = Menu{parent: nil, options: []string{"TEST", "TEST2", "TEST3", "TEST4"}, actions: []func(){func() { action_string = "HIT" }, nil, nil, nil}}
 
 func Test_SelectBasic(t *testing.T) {
 	m.selected = 0
@@ -64,4 +64,18 @@ func Test_EnterNilAction(t *testing.T) {
 	if action_string != "" {
 		t.Fail()
 	}
+}
+
+func Test_GotoParent(t *testing.T) {
+	CurrentMenu = nil
+	m.GoToParent()
+	if CurrentMenu != nil {
+		t.Fail()
+	}
+	menuWithParent := Menu{parent: &m}
+	menuWithParent.GoToParent()
+	if CurrentMenu != &m {
+		t.Fail()
+	}
+
 }
