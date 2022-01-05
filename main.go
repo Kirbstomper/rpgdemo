@@ -6,13 +6,23 @@ import (
 	"github.com/Kirbstomper/rpgdemo/ui"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/examples/resources/fonts"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/opentype"
 )
 
 type Game struct{}
 
+var menu_pos = 0
+
 func (g *Game) Update() error {
+	if inpututil.IsKeyJustPressed(ebiten.KeyArrowUp) {
+		ui.MAIN_MENU.SelectPrevious()
+	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyArrowDown) {
+		ui.MAIN_MENU.SelectNext()
+	}
+
 	return nil
 }
 
@@ -33,7 +43,7 @@ func init() {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	ui.MAIN_MENU.Draw(10, 10, screen)
+	ui.MAIN_MENU.Draw(10, 20, screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {

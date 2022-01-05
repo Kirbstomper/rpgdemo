@@ -23,9 +23,26 @@ func Test_SelectOver(t *testing.T) {
 }
 
 func Test_SelectUnder(t *testing.T) {
-	//Select something over length of options
+	//Select something under length of options
 	m.Select(-1)
 	if m.selected != len(m.options)-1 {
+		t.Fail()
+	}
+}
+
+func Test_SelectNext(t *testing.T) {
+	m.selected = 0
+	m.SelectNext()
+
+	if m.selected != 1 {
+		t.Fail()
+	}
+}
+
+func Test_SelectPrevious(t *testing.T) {
+	m.selected = 1
+	m.SelectPrevious()
+	if m.selected != 0 {
 		t.Fail()
 	}
 }

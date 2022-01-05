@@ -40,3 +40,12 @@ func (m *Menu) Select(i int) {
 		m.selected = i
 	}
 }
+
+//Selects next menu item
+func (m *Menu) SelectNext() {
+	m.Select(m.selected + 1)
+}
+
+func (m *Menu) SelectPrevious() {
+	m.Select(m.selected - 1)
+}
