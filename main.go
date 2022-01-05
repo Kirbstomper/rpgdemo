@@ -33,7 +33,7 @@ func init() {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	ui.DrawMainMenu(10, 10, screen)
+	ui.MAIN_MENU.DrawMenu(10, 10, screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {

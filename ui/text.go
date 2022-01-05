@@ -31,6 +31,11 @@ func init() {
 }
 
 // Draws text on given image
-func drawText(r *ebiten.Image, t string, x, y int) {
+func drawTextWhite(r *ebiten.Image, t string, x, y int) {
 	text.Draw(r, t, mplusNormalFont, x, y, color.White)
+}
+
+func drawTextRed(r *ebiten.Image, t string, x, y int) {
+	text.Draw(r, t, mplusNormalFont, x, y, color.RGBA{255, 0, 0, 255})
+
 }

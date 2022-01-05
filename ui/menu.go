@@ -11,6 +11,13 @@ const RUN = "Run"       //3
 
 var menu_options = make([]string, 4)
 
+var MAIN_MENU = &Menu{menu_options, 0}
+
+type Menu struct {
+	options  []string
+	selected int
+}
+
 func init() {
 	menu_options[0] = ATTACK
 	menu_options[1] = DEFEND
@@ -19,13 +26,13 @@ func init() {
 }
 
 // Draws the menu
-func drawMenu(op []string, x, y int, r *ebiten.Image) {
+func (m Menu) DrawMenu(x, y int, r *ebiten.Image) {
 	spacing := 20
-	for i, s := range op {
-		drawText(r, s, x, y+(i*spacing))
+	for i, s := range m.options {
+		if m.selected == i {
+			drawTextRed(r, s, x, y+(i*spacing))
+		} else {
+			drawTextWhite(r, s, x, y+(i*spacing))
+		}
 	}
-}
-
-func DrawMainMenu(x, y int, r *ebiten.Image) {
-	drawMenu(menu_options, x, y, r)
 }
