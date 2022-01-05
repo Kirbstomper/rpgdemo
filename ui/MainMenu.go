@@ -7,10 +7,22 @@ const DEFEND = "Defend" //1
 const ITEMS = "Items"   //2
 const RUN = "Run"       //3
 
-var MAIN_MENU = &Menu{[]string{ATTACK, DEFEND, ITEMS, RUN}, 0, []func(){attackAction, defendAction, itemsAction, runAction}}
+var MAIN_MENU Menu
+
+func init() {
+	MAIN_MENU = Menu{
+		parent:   nil,
+		options:  []string{ATTACK, DEFEND, ITEMS, RUN},
+		selected: 0,
+		actions:  []func(){attackAction, defendAction, itemsAction, runAction},
+
+		x: 20,
+		y: 20,
+	}
+}
 
 func attackAction() {
-	println("Attack!")
+	CurrentMenu = &ATTACK_MENU
 }
 func defendAction() {
 	println("Defend!")
