@@ -1,0 +1,1 @@
+Just a demo project made with ebiten [https://github.com/hajimehoshi/ebiten] 
