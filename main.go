@@ -22,6 +22,9 @@ func (g *Game) Update() error {
 	if inpututil.IsKeyJustPressed(ebiten.KeyArrowDown) {
 		ui.MAIN_MENU.SelectNext()
 	}
+	if inpututil.IsKeyJustPressed(ebiten.KeyArrowRight) {
+		ui.MAIN_MENU.Enter()
+	}
 
 	return nil
 }

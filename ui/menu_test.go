@@ -2,7 +2,8 @@ package ui
 
 import "testing"
 
-var m = Menu{options: []string{"TEST", "TEST2", "TEST3", "TEST4"}}
+var action_string = ""
+var m = Menu{options: []string{"TEST", "TEST2", "TEST3", "TEST4"}, actions: []func(){func() { action_string = "HIT" }, nil, nil, nil}}
 
 func Test_SelectBasic(t *testing.T) {
 	m.selected = 0
@@ -43,6 +44,24 @@ func Test_SelectPrevious(t *testing.T) {
 	m.selected = 1
 	m.SelectPrevious()
 	if m.selected != 0 {
+		t.Fail()
+	}
+}
+
+func Test_EnterNonNilAction(t *testing.T) {
+	m.selected = 0
+	action_string = ""
+	m.Enter()
+	if action_string != "HIT" {
+		t.Fail()
+	}
+}
+
+func Test_EnterNilAction(t *testing.T) {
+	m.selected = 1
+	action_string = ""
+	m.Enter()
+	if action_string != "" {
 		t.Fail()
 	}
 }

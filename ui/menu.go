@@ -2,18 +2,12 @@ package ui
 
 import "github.com/hajimehoshi/ebiten/v2"
 
-// This should handle drawing the player menu from which commands can be selected
-
-const ATTACK = "Attack" //0
-const DEFEND = "Defend" //1
-const ITEMS = "Items"   //2
-const RUN = "Run"       //3
-
-var MAIN_MENU = &Menu{[]string{ATTACK, DEFEND, ITEMS, RUN}, 0}
+// This should handle drawing menus from which commands can be selected
 
 type Menu struct {
 	options  []string
 	selected int
+	actions  []func()
 }
 
 // Draw the menu at given position on image
@@ -48,4 +42,11 @@ func (m *Menu) SelectNext() {
 
 func (m *Menu) SelectPrevious() {
 	m.Select(m.selected - 1)
+}
+
+// Executes function at selected
+func (m *Menu) Enter() {
+	if m.actions[m.selected] != nil {
+		m.actions[m.selected]() //Call function
+	}
 }
