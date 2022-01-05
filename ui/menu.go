@@ -9,24 +9,15 @@ const DEFEND = "Defend" //1
 const ITEMS = "Items"   //2
 const RUN = "Run"       //3
 
-var menu_options = make([]string, 4)
-
-var MAIN_MENU = &Menu{menu_options, 0}
+var MAIN_MENU = &Menu{[]string{ATTACK, DEFEND, ITEMS, RUN}, 0}
 
 type Menu struct {
 	options  []string
 	selected int
 }
 
-func init() {
-	menu_options[0] = ATTACK
-	menu_options[1] = DEFEND
-	menu_options[2] = ITEMS
-	menu_options[3] = RUN
-}
-
-// Draws the menu
-func (m Menu) DrawMenu(x, y int, r *ebiten.Image) {
+// Draw the menu at given position on image
+func (m Menu) Draw(x, y int, r *ebiten.Image) {
 	spacing := 20
 	for i, s := range m.options {
 		if m.selected == i {
@@ -35,4 +26,10 @@ func (m Menu) DrawMenu(x, y int, r *ebiten.Image) {
 			drawTextWhite(r, s, x, y+(i*spacing))
 		}
 	}
+}
+
+//Updates item selected for a menu. If new selection is greater or less than menu optiosn
+//will wrap options around
+func (m Menu) Select(i int) {
+
 }
