@@ -1,6 +1,6 @@
 package battle
 
 type enemy struct {
-	name   string
-	health int
+	Name   string
+	Health int
 }

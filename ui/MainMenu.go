@@ -22,6 +22,7 @@ func init() {
 }
 
 func attackAction() {
+	updateAttackOptions()
 	CurrentMenu = &ATTACK_MENU
 }
 func defendAction() {
