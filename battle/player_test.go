@@ -12,11 +12,11 @@ func Test_DefendPlayer(t *testing.T) {
 
 }
 
-func Test_EndOfTurn(t *testing.T) {
+func Test_ResetStats(t *testing.T) {
 
 	p := Player{currentDefense: 99, baseDefense: 3}
 
-	p.EndOfTurn()
+	p.ResetStats()
 	if p.currentDefense != p.baseDefense {
 		t.Fail()
 	}

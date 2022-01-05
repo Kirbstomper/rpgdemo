@@ -20,6 +20,7 @@ func (p *Player) AttackEnemy(e *enemy) {
 }
 
 //Reset defense back to regular
-func (p *Player) EndOfTurn() {
+func (p *Player) ResetStats() {
+	p.currentAttack = p.baseAttack
 	p.currentDefense = p.baseDefense
 }

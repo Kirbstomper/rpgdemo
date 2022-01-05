@@ -47,19 +47,20 @@ func init() {
 		Hinting: font.HintingFull,
 	})
 
-	ui.CurrentMenu = &ui.ATTACK_MENU
+	ui.CurrentMenu = &ui.MAIN_MENU
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	ui.CurrentMenu.Draw(screen)
+	ui.BattleLog.Draw(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return 320, 240
+	return 1000, 1000
 }
 
 func main() {
-	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowSize(1000, 1000)
 	ebiten.SetWindowTitle("Hello, World!")
 	if err := ebiten.RunGame(&Game{}); err != nil {
 		log.Fatal(err)
