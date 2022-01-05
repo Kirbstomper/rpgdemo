@@ -1,12 +1,11 @@
 package main
 
 import (
-	"image/color"
 	"log"
 
+	"github.com/Kirbstomper/rpgdemo/ui"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/examples/resources/fonts"
-	"github.com/hajimehoshi/ebiten/v2/text"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/opentype"
 )
@@ -34,7 +33,7 @@ func init() {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	text.Draw(screen, "Hello, World", mplusNormalFont, 0, 40, color.White)
+	ui.DrawMainMenu(10, 10, screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
