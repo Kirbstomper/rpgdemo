@@ -10,8 +10,9 @@ var (
 )
 
 const (
-	PLAYER_TURN = 1
-	ENEMY_TURN  = 2
+	PLAYER_TURN  = 1
+	ENEMY_TURN   = 2
+	BETWEEN_TURN = 3
 )
 
 func init() {
@@ -21,17 +22,5 @@ func init() {
 
 //This loop should continue until Either player health is 0 or no more enemies exist
 func TurnLoop() {
-	switch State {
-	case PLAYER_TURN:
-		{
-			println("It's the Hero turn!")
-			Hero.ResetStats()
-		}
-	//Enemies act
-	case ENEMY_TURN:
-		{
-			println("Its the enemy turn!")
 
-		}
-	}
 }

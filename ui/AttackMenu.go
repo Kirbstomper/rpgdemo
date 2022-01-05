@@ -20,7 +20,10 @@ func updateAttackOptions() {
 	var newActions = make([]func(), len(battle.Enemies))
 	for i, e := range battle.Enemies {
 		newOptions[i] = e.Name
-		newActions[i] = func() { println("Attacking ", e.Name) } //Lol is this even safe?
+		newActions[i] = func() {
+			SetCurrentlog("Attacking " + e.Name) //Lol is this even safe?
+			battle.State = battle.ENEMY_TURN
+		}
 	}
 	ATTACK_MENU.actions = newActions
 	ATTACK_MENU.options = newOptions
