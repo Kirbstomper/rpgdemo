@@ -6,9 +6,6 @@ import (
 	"github.com/Kirbstomper/rpgdemo/input"
 	"github.com/Kirbstomper/rpgdemo/ui"
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/examples/resources/fonts"
-	"golang.org/x/image/font"
-	"golang.org/x/image/font/opentype"
 )
 
 type Game struct{}
@@ -21,21 +18,7 @@ func (g *Game) Update() error {
 	return nil
 }
 
-var mplusNormalFont font.Face
-
 func init() {
-	tt, err := opentype.Parse(fonts.MPlus1pRegular_ttf)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	const dpi = 72
-	mplusNormalFont, err = opentype.NewFace(tt, &opentype.FaceOptions{
-		Size:    24,
-		DPI:     dpi,
-		Hinting: font.HintingFull,
-	})
-
 	ui.CurrentMenu = &ui.MAIN_MENU
 }
 
