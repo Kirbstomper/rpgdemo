@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/Kirbstomper/rpgdemo/battle"
 	"github.com/Kirbstomper/rpgdemo/input"
 	"github.com/Kirbstomper/rpgdemo/ui"
 	"github.com/hajimehoshi/ebiten/v2"
@@ -15,11 +16,13 @@ var menu_pos = 0
 func (g *Game) Update() error {
 	input.ReadInput() // Read User input
 
+	battle.BattleLoop()
 	return nil
 }
 
 func init() {
 	ui.CurrentMenu = &ui.MAIN_MENU
+
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {

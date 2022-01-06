@@ -3,6 +3,7 @@ package ui
 import (
 	"image/color"
 
+	"github.com/Kirbstomper/rpgdemo/battle"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -20,27 +21,29 @@ type Menu struct {
 
 // Draw the menu at given position on image
 func (m *Menu) Draw(r *ebiten.Image) {
-	var basex, basey int
+	if battle.IsPlayersTurn() {
+		var basex, basey int
 
-	if m.parent != nil {
-		basex, basey = m.parent.x, m.parent.y
-		m.parent.Draw(r)
-	}
-	basex += 20
-	basey += 20
-	spacing := 20
-	background := ebiten.NewImage(150, 100)
-	background.Fill(color.RGBA{0, 0, 255, 255})
-	for i, s := range m.options {
-		if m.selected == i {
-			drawTextRed(background, s, basex, basey+(i*spacing))
-		} else {
-			drawTextWhite(background, s, basex, basey+(i*spacing))
+		if m.parent != nil {
+			basex, basey = m.parent.x, m.parent.y
+			m.parent.Draw(r)
 		}
+		basex += 20
+		basey += 20
+		spacing := 20
+		background := ebiten.NewImage(150, 100)
+		background.Fill(color.RGBA{0, 0, 255, 255})
+		for i, s := range m.options {
+			if m.selected == i {
+				drawTextRed(background, s, basex, basey+(i*spacing))
+			} else {
+				drawTextWhite(background, s, basex, basey+(i*spacing))
+			}
+		}
+		op := &ebiten.DrawImageOptions{}
+		op.GeoM.Translate(float64(basex), float64(basey))
+		r.DrawImage(background, op)
 	}
-	op := &ebiten.DrawImageOptions{}
-	op.GeoM.Translate(float64(basex), float64(basey))
-	r.DrawImage(background, op)
 }
 
 //Updates item selected for a menu. If new selection is greater or less than menu optiosn
