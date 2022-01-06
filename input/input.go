@@ -1,11 +1,14 @@
 package input
 
+//Handles reading input from the user to interact with the game
+
 import (
 	"github.com/Kirbstomper/rpgdemo/ui"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
+//Reads user input to determine what should be controled based on current state
 func ReadInput() {
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyArrowUp) {
