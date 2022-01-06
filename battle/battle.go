@@ -10,12 +10,12 @@ package battle
 // Control -> UI -> (reads data from) -> Battle
 
 var (
-	hero player
+	Hero *player
 )
 
 const ()
 
 func init() {
 
-	hero = player{Health: 100}
+	Hero = &player{Health: 100}
 }

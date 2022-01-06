@@ -24,6 +24,7 @@ func init() {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	ui.CurrentMenu.Draw(screen)
+	ui.DrawPlayerInformation(screen)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
