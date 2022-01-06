@@ -21,7 +21,7 @@ func init() {
 func updateAttackMenu() {
 	nOpts := []string{}
 	nActions := []func(){}
-	for i, _ := range battle.Foes {
+	for i := range battle.Foes {
 		var index = i
 		foe := &battle.Foes[index]
 		nOpts = append(nOpts, foe.Name)
