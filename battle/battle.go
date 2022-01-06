@@ -11,11 +11,17 @@ package battle
 
 var (
 	Hero *player
+	Foes []enemy
 )
 
 const ()
 
-func init() {
+type enemy struct {
+	Name   string
+	Health int
+}
 
+func init() {
+	Foes = []enemy{{Name: "Goblin 1", Health: 20}, {Name: "Goblin 2", Health: 25}}
 	Hero = &player{Health: 100}
 }
