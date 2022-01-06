@@ -24,6 +24,7 @@ func init() {
 }
 
 func attackAction() {
+	updateAttackMenu()
 	CurrentMenu = &ATTACK_MENU
 }
 func defendAction() {
