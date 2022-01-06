@@ -27,8 +27,8 @@ func updateAttackMenu() {
 		nOpts = append(nOpts, foe.Name)
 		nActions = append(nActions, func() {
 			battle.Hero.Attack(foe)
-			println(foe.Name)
 			battle.State = battle.ENEMY_TURN
+			
 		})
 	}
 	ATTACK_MENU.options = nOpts

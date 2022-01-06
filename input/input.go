@@ -29,7 +29,7 @@ func ReadInput() {
 	if !battle.IsPlayersTurn() {
 		if inpututil.IsKeyJustPressed(ebiten.KeySpace) {
 			if !battle.IsLogEmpty() {
-				println(battle.ReadLogLine())
+				battle.ReadLogLine()
 			}
 		}
 	}

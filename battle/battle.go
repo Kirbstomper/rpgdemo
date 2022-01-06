@@ -14,7 +14,9 @@ var (
 	Foes      []enemy
 	foeTurn   int
 	battlelog []string
-	State     int
+	Latestlog string
+
+	State int
 )
 
 const (
@@ -42,7 +44,11 @@ func BattleLoop() {
 				foeTurn = 0
 				State = PLAYER_TURN
 			} else {
+				if !IsLogEmpty() {
+					ReadLogLine()
+				}
 				battlelog = append(battlelog, "Player Hit by "+Foes[foeTurn].Name)
+				Latestlog = "Player Hit by " + Foes[foeTurn].Name
 				Hero.Health = Hero.Health - 5
 				foeTurn += 1
 			}
@@ -52,15 +58,13 @@ func BattleLoop() {
 }
 
 //Reads a entry in the log and pops it off
-func ReadLogLine() string {
-	line := battlelog[0]
+func ReadLogLine() {
 	if len(battlelog) > 1 {
 		battlelog = battlelog[1:]
 	}
 	if len(battlelog) == 1 {
 		battlelog = []string{}
 	}
-	return line
 }
 
 //Returns if log is empty
@@ -71,3 +75,4 @@ func IsLogEmpty() bool {
 func IsPlayersTurn() bool {
 	return State == PLAYER_TURN
 }
+
