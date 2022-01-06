@@ -1,5 +1,7 @@
 package ui
 
+import "os"
+
 //This is used for all main menu logic
 
 const ATTACK = "Attack" //0
@@ -32,4 +34,5 @@ func itemsAction() {
 }
 func runAction() {
 	println("Run!")
+	os.Exit(1)
 }
