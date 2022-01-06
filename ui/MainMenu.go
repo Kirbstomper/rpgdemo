@@ -1,5 +1,7 @@
 package ui
 
+import "os"
+
 //This is used for all main menu logic
 
 const ATTACK = "Attack" //0
@@ -22,6 +24,7 @@ func init() {
 }
 
 func attackAction() {
+	updateAttackMenu()
 	CurrentMenu = &ATTACK_MENU
 }
 func defendAction() {
@@ -32,4 +35,5 @@ func itemsAction() {
 }
 func runAction() {
 	println("Run!")
+	os.Exit(1)
 }
